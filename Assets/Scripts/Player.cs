@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     private float _borderPositionXright = 3.83f;
     private float _borderPositionXleft = -7.15f;
 
+    // hello! 
+
     private void Awake()
     {
         _transform = GetComponent<Transform>();
