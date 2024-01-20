@@ -39,6 +39,28 @@ public class MonstersSpawner : MonoBehaviour
     }
     private void MonstersSpawn2()
     {
-        Instantiate(MonstersPrefab2, new Vector3(_borderPositionX, Random.Range(_downBorderPositionY, _upBorderPositionY), transform.position.z), Quaternion.Euler(0, 180, 0));
+        GameObject monsterPrefab2 = Instantiate(MonstersPrefab2, new Vector3(_borderPositionX, Random.Range(_downBorderPositionY, _upBorderPositionY), transform.position.z), Quaternion.Euler(0, 180, 0));
+        StartCoroutine(MoveMonster2(monsterPrefab2.transform,monsterPrefab2));
+    }
+    private IEnumerator MoveMonster2(Transform MonsterPrefab2,GameObject monsterprefab2)
+    {
+        while (true)
+        {
+            
+            int moveSpeed = 1;
+            MonsterPrefab2.Translate(Vector3.left * moveSpeed * Time.deltaTime);
+            yield return null;
+            int destroyBorderPosition = 10;
+            if (monsterprefab2 == null)
+            {
+                yield break;
+            }
+            if (MonsterPrefab2.position.x > destroyBorderPosition)
+            {
+                Destroy(monsterprefab2);
+            }
+            
+        }
+       
     }
 }
