@@ -1,16 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class Player : MonoBehaviour
-{
+{    
     public float MoveSpeed;
+    public GameObject LaserPrefab;
 
     private Transform _transform;
     private SpriteRenderer _spriteRenderer;
     private float _borderPositionXright = 3.83f;
     private float _borderPositionXleft = -7.15f;
-
+    private float _shootForce = 50f;
     // hello! 
 
     private void Awake()
@@ -21,7 +23,8 @@ public class Player : MonoBehaviour
     private void Update()
     {
         PlayerMovement();
-        ChangeSpritePosition();       
+        ChangeSpritePosition();
+        Shoot();
     }
     private void PlayerMovement()
     {
@@ -62,6 +65,14 @@ public class Player : MonoBehaviour
         if (horizontal > 0)
         {
             _spriteRenderer.flipX = true;
+        }
+    }
+    private void Shoot()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            Rigidbody2D laserRB = Instantiate(LaserPrefab, _transform.position+Vector3.up*1.3f, Quaternion.identity).GetComponent<Rigidbody2D>();
+            laserRB.velocity = Vector3.up * _shootForce;
         }
     }
 }
