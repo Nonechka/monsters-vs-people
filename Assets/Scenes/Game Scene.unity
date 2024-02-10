@@ -365,6 +365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 9
+  LaserPrefab: {fileID: 5454953195404682392, guid: 2b27d90e7ffbd6d4d931cd8f99427c73, type: 3}
 --- !u!61 &1733828230
 BoxCollider2D:
   m_ObjectHideFlags: 0
