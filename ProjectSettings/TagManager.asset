@@ -6,6 +6,7 @@ TagManager:
   tags:
   - monsters
   - laser
+  - monsters2
   layers:
   - Default
   - TransparentFX

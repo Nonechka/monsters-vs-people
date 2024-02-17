@@ -4,12 +4,12 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Monsters : MonoBehaviour
+public class Monsters2 : MonoBehaviour
 {
-    public TMP_Text LivesText;
-    public int MonstersLives;
-    public float MoveSpeed;
-    public Slider Slider;
+    public TMP_Text LivesText2;
+    public int MonstersLives2;
+    public Slider Slider2;
+    
 
     private Transform _transform;
     private float _deathZone = -4.72f;
@@ -21,26 +21,18 @@ public class Monsters : MonoBehaviour
 
     private void Update()
     {
-        Slider.value = MonstersLives;
-        LivesText.text = MonstersLives.ToString();
-        _transform.Translate(Vector3.down * MoveSpeed * Time.deltaTime);
-        if (_transform.position.y < _deathZone)
+        Slider2.value = MonstersLives2;
+        LivesText2.text = MonstersLives2.ToString();
+        if (MonstersLives2 == 0)
         {
             Destroy(gameObject);
         }
-
-        if(MonstersLives == 0)
-        {
-            Destroy(gameObject);
-        }
-       
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("laser"))
         {
-            MonstersLives--;
+            MonstersLives2-=2;
         }
     }
-   
 }

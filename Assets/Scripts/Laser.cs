@@ -10,6 +10,10 @@ public class Laser : MonoBehaviour
         {            
             Destroy(gameObject);           
         }
+        if (collision.gameObject.CompareTag("monsters2"))
+        {
+            Destroy(gameObject);
+        }
     }
 
 }
